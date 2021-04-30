@@ -25,6 +25,9 @@ import android.widget.TextView;
             Button followBtn = findViewById(R.id.followbtn);
             User user = new User();
             user.followed = false;
+            
+            final TextView message = (TextView) findViewById(R.id.messagebtn);
+            message.setText("Message");
 
 
             followBtn.setOnClickListener(new View.OnClickListener() {
