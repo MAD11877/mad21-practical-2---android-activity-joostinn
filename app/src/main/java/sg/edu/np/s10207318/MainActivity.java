@@ -2,11 +2,13 @@ package sg.edu.np.s10207318;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,9 +18,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView name = findViewById(R.id.topname);
-        name.setText("Name");
+
+
+        name.setText("MAD " + getIntent().getIntExtra("RandomID",0));
+
         TextView describe = findViewById(R.id.description);
-        describe.setText("description");
+
         Log.d("debug", "create");
 
         Button followBtn = findViewById(R.id.followbtn);
@@ -35,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
                 if (!user.followed) {
                     followBtn.setText("Unfollow");
                     user.followed = true;
+                    Toast.makeText(getApplicationContext(), "Unfollowed", Toast.LENGTH_SHORT).show();
                 } else {
                     followBtn.setText("Follow");//Thus ask to Follow
                     user.followed = false; //Thus setting boolean to false
+                    Toast.makeText(getApplicationContext(), "Followed", Toast.LENGTH_SHORT).show();
                 }
             }
         });
